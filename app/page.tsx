@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -15,42 +16,48 @@ export default function Home() {
       role: "Duelist",
       description: "Representing her home country of South Korea, Jett's agile and evasive fighting style lets her take risks no one else can.",
       abilities: ["Cloudburst", "Updraft", "Tailwind", "Blade Storm"],
-      color: "from-cyan-500 to-blue-600"
+      color: "from-cyan-500 to-blue-600",
+      image: "https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt1f0e1e2d1ece7426/5eb7cdc6ee88132a6f6cfc25/V_AGENTS_587x900_Jett.png"
     },
     {
       name: "Phoenix",
       role: "Duelist",
       description: "Hailing from the U.K., Phoenix's star power shines through in his fighting style, igniting the battlefield with flash and flare.",
       abilities: ["Blaze", "Curveball", "Hot Hands", "Run it Back"],
-      color: "from-orange-500 to-red-600"
+      color: "from-orange-500 to-red-600",
+      image: "https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt0a6afe94995c93b6/5eb7cdc6ee88132a6f6cfc31/V_AGENTS_587x900_Phoenix.png"
     },
     {
       name: "Sage",
       role: "Sentinel",
       description: "The stronghold of China, Sage creates safety for herself and her team wherever she goes. Able to revive fallen friends.",
       abilities: ["Barrier Orb", "Slow Orb", "Healing Orb", "Resurrection"],
-      color: "from-emerald-400 to-teal-600"
+      color: "from-emerald-400 to-teal-600",
+      image: "https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt36e7f7eef1cdb1e4/5eb7cdc6df178c41f04a0ed8/V_AGENTS_587x900_Sage.png"
     },
     {
       name: "Sova",
       role: "Initiator",
       description: "Born from the eternal winter of Russia's tundra, Sova tracks, finds, and eliminates enemies with ruthless efficiency.",
       abilities: ["Owl Drone", "Shock Bolt", "Recon Bolt", "Hunter's Fury"],
-      color: "from-blue-400 to-indigo-600"
+      color: "from-blue-400 to-indigo-600",
+      image: "https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt1f0e1e2d1ece7426/5eb7cdc6ee88132a6f6cfc29/V_AGENTS_587x900_Sova.png"
     },
     {
       name: "Viper",
       role: "Controller",
       description: "The American chemist, Viper deploys an array of poisonous chemical devices to control the battlefield.",
       abilities: ["Snake Bite", "Poison Cloud", "Toxic Screen", "Viper's Pit"],
-      color: "from-green-500 to-lime-600"
+      color: "from-green-500 to-lime-600",
+      image: "https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt45c7c3c7e7e113cf/5eb7cdc6bf6a5a415e0680c1/V_AGENTS_587x900_Viper.png"
     },
     {
       name: "Reyna",
       role: "Duelist",
       description: "Forged in the heart of Mexico, Reyna dominates single combat, popping off with each kill she scores.",
       abilities: ["Leer", "Devour", "Dismiss", "Empress"],
-      color: "from-purple-500 to-pink-600"
+      color: "from-purple-500 to-pink-600",
+      image: "https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt4c41c8fdd525f413/5ed7d2e77c1b4a0e7d714929/V_AGENTS_587x900_Reyna.png"
     }
   ];
 
@@ -172,8 +179,15 @@ export default function Home() {
                 onClick={() => setSelectedAgent(selectedAgent === agent.name ? null : agent.name)}
               >
                 <CardHeader>
-                  <div className={`w-full h-48 bg-gradient-to-br ${agent.color} rounded-lg mb-4 flex items-center justify-center group-hover:scale-105 transition-transform`}>
-                    <span className="text-6xl font-black text-white/20">{agent.name[0]}</span>
+                  <div className={`w-full h-64 bg-gradient-to-br ${agent.color} rounded-lg mb-4 flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden relative`}>
+                    <Image 
+                      src={agent.image} 
+                      alt={agent.name} 
+                      width={587}
+                      height={900}
+                      className="h-full w-auto object-contain"
+                      unoptimized
+                    />
                   </div>
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-2xl text-white">{agent.name}</CardTitle>
@@ -305,4 +319,7 @@ export default function Home() {
     </div>
   );
 }
+
+
+
 
